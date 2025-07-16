@@ -3,6 +3,8 @@ const app= express();
 const users= require('./Router/userRoutes');
 const products = require('./Router/productRoutes');
 const cart = require('./Router/cartRoutes')
+app.use(express.static('public'))
+app.use(express.json());
 app.use('/users',users);
 app.use('/products',products)
 app.use('/cart',cart)
@@ -31,6 +33,8 @@ app.use('/cart',cart)
 //     users.push(user);
 //     res.status(201).json(user);
 // })
+app.use(express.static('public'))
+app.use(express.json());
 app.use((req,res)=>{
     res.status(404).end(`<h1> error: 404 page not found</h1>`)
     
